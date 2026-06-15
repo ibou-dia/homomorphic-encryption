@@ -1219,10 +1219,7 @@
                 <span class="step-num">①</span>
                 <div class="step-body">
                   <h3>La clé secrète s</h3>
-                  <p>
-                    Un vecteur de petits entiers aléatoires, connu seulement du
-                    propriétaire des données.
-                  </p>
+                  <p>Connu seulement du propriétaire des données.</p>
                 </div>
               </div>
               <div class="step-row">
@@ -2017,12 +2014,12 @@
         <div class="col2">
           <div class="col2-left">
             <h2 class="d1">Le bootstrapping</h2>
-            <p class="subtitle d2">
+            <!-- <p class="subtitle d2">
               Le bruit s'accumule opération après opération. Dépasser le seuil =
               résultat corrompu. Le bootstrapping est l'opération qui
               <em>re-chiffre le chiffré</em> pour éliminer le bruit — sans
               jamais voir la donnée.
-            </p>
+            </p> -->
             <div class="steps d3">
               <div class="step-row">
                 <span class="step-num">①</span>
@@ -2463,11 +2460,11 @@
         <div class="col2">
           <div class="col2-left">
             <h2 class="d1">Le problème des fonctions d'activation</h2>
-            <p class="subtitle d2">
+            <!-- <p class="subtitle d2">
               Les réseaux de neurones utilisent des fonctions non-linéaires
               comme ReLU ou softmax. Ces fonctions <em>n'existent pas</em> en
               FHE natif — il faut les approximer par des polynômes.
-            </p>
+            </p> -->
             <div class="steps d3">
               <div class="step-row">
                 <span class="step-num">①</span>
@@ -3159,6 +3156,788 @@
               → le serveur ne voit jamais ni les données ni les poids
             </text>
           </svg>
+        </div>
+      </div>
+
+      <!-- ═══════════════ S9b WORKFLOW ═══════════════ -->
+      <div class="slide" id="s9b">
+        <div class="tag"><span></span>02 · FHE — Notre pipeline</div>
+        <h2 class="d1">Workflow du Projet</h2>
+        <svg
+          viewBox="0 0 680 420"
+          style="width: 100%; max-width: 960px; height: auto"
+        >
+          <defs>
+            <marker
+              id="awf"
+              viewBox="0 0 10 10"
+              refX="8"
+              refY="5"
+              markerWidth="6"
+              markerHeight="6"
+              orient="auto-start-reverse"
+            >
+              <path
+                d="M2 1L8 5L2 9"
+                fill="none"
+                stroke="context-stroke"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </marker>
+          </defs>
+
+          <!-- ── 1 : Données brutes ── -->
+          <rect
+            x="20"
+            y="168"
+            width="110"
+            height="84"
+            rx="10"
+            fill="#f4f4f2"
+            stroke="#d1d1ce"
+            stroke-width=".8"
+          />
+          <text
+            x="75"
+            y="198"
+            text-anchor="middle"
+            font-family="DM Sans,sans-serif"
+            font-size="13"
+            font-weight="500"
+            fill="#1a1a1a"
+          >
+            Données
+          </text>
+          <text
+            x="75"
+            y="216"
+            text-anchor="middle"
+            font-family="DM Sans,sans-serif"
+            font-size="11"
+            fill="#6b6b6b"
+          >
+            locales
+          </text>
+          <rect x="36" y="228" width="78" height="4" rx="2" fill="#b4b2a9" />
+          <rect
+            x="36"
+            y="236"
+            width="54"
+            height="4"
+            rx="2"
+            fill="#b4b2a9"
+            opacity=".6"
+          />
+          <text
+            x="75"
+            y="264"
+            text-anchor="middle"
+            font-family="DM Mono,monospace"
+            font-size="10"
+            fill="#aaa"
+          >
+            local
+          </text>
+
+          <!-- ── 2 : Chiffrement ── -->
+          <rect
+            x="172"
+            y="168"
+            width="110"
+            height="84"
+            rx="10"
+            fill="#f5f3ff"
+            stroke="#c4b5fd"
+            stroke-width=".8"
+          />
+          <text
+            x="227"
+            y="196"
+            text-anchor="middle"
+            font-family="DM Sans,sans-serif"
+            font-size="13"
+            font-weight="500"
+            fill="#5b21b6"
+          >
+            Chiffrement
+          </text>
+          <text
+            x="227"
+            y="214"
+            text-anchor="middle"
+            font-family="DM Sans,sans-serif"
+            font-size="11"
+            fill="#7c3aed"
+          >
+            FHE (CKKS)
+          </text>
+          <rect
+            x="211"
+            y="226"
+            width="32"
+            height="20"
+            rx="4"
+            fill="#7c3aed"
+            opacity=".7"
+          />
+          <path
+            d="M217 226v-5q10-8 20 0v5"
+            fill="none"
+            stroke="#7c3aed"
+            stroke-width="2.5"
+            stroke-linecap="round"
+          />
+          <text
+            x="227"
+            y="264"
+            text-anchor="middle"
+            font-family="DM Mono,monospace"
+            font-size="10"
+            fill="#aaa"
+          >
+            local
+          </text>
+
+          <!-- flèche 1→2 -->
+          <line
+            x1="130"
+            y1="210"
+            x2="170"
+            y2="210"
+            stroke="#6b6b6b"
+            stroke-width="1.5"
+            marker-end="url(#awf)"
+          />
+
+          <!-- ── 3 : S3 Bucket ── -->
+          <rect
+            x="324"
+            y="140"
+            width="110"
+            height="140"
+            rx="10"
+            fill="#fef9ec"
+            stroke="#fcd34d"
+            stroke-width=".8"
+          />
+          <text
+            x="379"
+            y="168"
+            text-anchor="middle"
+            font-family="DM Sans,sans-serif"
+            font-size="13"
+            font-weight="500"
+            fill="#92400e"
+          >
+            S3 Bucket
+          </text>
+          <text
+            x="379"
+            y="185"
+            text-anchor="middle"
+            font-family="DM Sans,sans-serif"
+            font-size="11"
+            fill="#b45309"
+          >
+            AWS
+          </text>
+          <rect
+            x="354"
+            y="196"
+            width="50"
+            height="34"
+            rx="5"
+            fill="#d97706"
+            opacity=".25"
+          />
+          <line
+            x1="354"
+            y1="207"
+            x2="404"
+            y2="207"
+            stroke="#d97706"
+            stroke-width=".8"
+            opacity=".5"
+          />
+          <text
+            x="379"
+            y="228"
+            text-anchor="middle"
+            font-family="DM Mono,monospace"
+            font-size="10"
+            fill="#92400e"
+          >
+            ct_data
+          </text>
+          <rect
+            x="362"
+            y="240"
+            width="34"
+            height="16"
+            rx="6"
+            fill="#d97706"
+            opacity=".3"
+          />
+          <text
+            x="379"
+            y="252"
+            text-anchor="middle"
+            font-family="DM Mono,monospace"
+            font-size="11"
+            fill="#92400e"
+          >
+            🔒
+          </text>
+          <text
+            x="379"
+            y="294"
+            text-anchor="middle"
+            font-family="DM Mono,monospace"
+            font-size="10"
+            fill="#aaa"
+          >
+            cloud AWS
+          </text>
+
+          <!-- flèche 2→3 animée -->
+          <line
+            x1="282"
+            y1="210"
+            x2="322"
+            y2="210"
+            stroke="#d97706"
+            stroke-width="1.5"
+            marker-end="url(#awf)"
+            stroke-dasharray="6 4"
+          >
+            <animate
+              attributeName="stroke-dashoffset"
+              values="20;0"
+              dur="1.6s"
+              repeatCount="indefinite"
+            />
+          </line>
+          <text
+            x="302"
+            y="203"
+            text-anchor="middle"
+            font-family="DM Mono,monospace"
+            font-size="9.5"
+            fill="#d97706"
+          >
+            upload
+          </text>
+
+          <!-- ── 4 : EC2 ── -->
+          <rect
+            x="476"
+            y="100"
+            width="184"
+            height="220"
+            rx="12"
+            fill="#e1f5ee"
+            stroke="#5dcaa5"
+            stroke-width=".8"
+          />
+          <text
+            x="568"
+            y="126"
+            text-anchor="middle"
+            font-family="DM Sans,sans-serif"
+            font-size="13"
+            font-weight="500"
+            fill="#085041"
+          >
+            Entraînement
+          </text>
+          <text
+            x="568"
+            y="144"
+            text-anchor="middle"
+            font-family="DM Sans,sans-serif"
+            font-size="11"
+            fill="#0f6e56"
+          >
+            EC2
+          </text>
+          <!-- mini réseau -->
+          <circle cx="516" cy="185" r="8" fill="#0d9488" opacity=".45" />
+          <circle cx="516" cy="208" r="8" fill="#0d9488" opacity=".45" />
+          <circle cx="516" cy="231" r="8" fill="#0d9488" opacity=".45" />
+          <circle cx="562" cy="193" r="8" fill="#0d9488" opacity=".5" />
+          <circle cx="562" cy="217" r="8" fill="#0d9488" opacity=".5" />
+          <circle cx="610" cy="208" r="11" fill="#0d9488" opacity=".65" />
+          <line
+            x1="524"
+            y1="185"
+            x2="554"
+            y2="193"
+            stroke="#0d9488"
+            stroke-width=".7"
+            opacity=".4"
+          />
+          <line
+            x1="524"
+            y1="185"
+            x2="554"
+            y2="217"
+            stroke="#0d9488"
+            stroke-width=".7"
+            opacity=".4"
+          />
+          <line
+            x1="524"
+            y1="208"
+            x2="554"
+            y2="193"
+            stroke="#0d9488"
+            stroke-width=".7"
+            opacity=".4"
+          />
+          <line
+            x1="524"
+            y1="208"
+            x2="554"
+            y2="217"
+            stroke="#0d9488"
+            stroke-width=".7"
+            opacity=".4"
+          />
+          <line
+            x1="524"
+            y1="231"
+            x2="554"
+            y2="193"
+            stroke="#0d9488"
+            stroke-width=".7"
+            opacity=".4"
+          />
+          <line
+            x1="524"
+            y1="231"
+            x2="554"
+            y2="217"
+            stroke="#0d9488"
+            stroke-width=".7"
+            opacity=".4"
+          />
+          <line
+            x1="570"
+            y1="193"
+            x2="599"
+            y2="208"
+            stroke="#0d9488"
+            stroke-width=".7"
+            opacity=".4"
+          />
+          <line
+            x1="570"
+            y1="217"
+            x2="599"
+            y2="208"
+            stroke="#0d9488"
+            stroke-width=".7"
+            opacity=".4"
+          />
+          <!-- particule animée -->
+          <circle r="3.5" fill="#16a34a" opacity=".9">
+            <animateMotion
+              dur="1.9s"
+              repeatCount="indefinite"
+              path="M516,208 L562,193 L610,208"
+            />
+          </circle>
+          <text
+            x="568"
+            y="264"
+            text-anchor="middle"
+            font-family="DM Mono,monospace"
+            font-size="10"
+            fill="#085041"
+          >
+            🔒 🔒 🔒
+          </text>
+          <text
+            x="568"
+            y="282"
+            text-anchor="middle"
+            font-family="DM Sans,sans-serif"
+            font-size="10"
+            fill="#0f6e56"
+          >
+            tout reste chiffré
+          </text>
+          <text
+            x="568"
+            y="298"
+            text-anchor="middle"
+            font-family="DM Sans,sans-serif"
+            font-size="10"
+            fill="#0f6e56"
+          >
+            bootstrapping auto
+          </text>
+          <text
+            x="568"
+            y="336"
+            text-anchor="middle"
+            font-family="DM Mono,monospace"
+            font-size="10"
+            fill="#aaa"
+          >
+            cloud AWS
+          </text>
+
+          <!-- flèche S3→EC2 animée -->
+          <line
+            x1="434"
+            y1="210"
+            x2="474"
+            y2="210"
+            stroke="#16a34a"
+            stroke-width="1.5"
+            marker-end="url(#awf)"
+            stroke-dasharray="6 4"
+          >
+            <animate
+              attributeName="stroke-dashoffset"
+              values="20;0"
+              dur="1.8s"
+              repeatCount="indefinite"
+            />
+          </line>
+
+          <!-- ── Modèle chiffré retour ── -->
+          <rect
+            x="324"
+            y="344"
+            width="110"
+            height="54"
+            rx="10"
+            fill="#e1f5ee"
+            stroke="#5dcaa5"
+            stroke-width=".8"
+          />
+          <text
+            x="379"
+            y="364"
+            text-anchor="middle"
+            font-family="DM Sans,sans-serif"
+            font-size="13"
+            font-weight="500"
+            fill="#085041"
+          >
+            Modèle
+          </text>
+          <text
+            x="379"
+            y="381"
+            text-anchor="middle"
+            font-family="DM Mono,monospace"
+            font-size="10"
+            fill="#0f6e56"
+          >
+            Enc(W)
+          </text>
+
+          <!-- flèche EC2 → modèle chiffré (courbe) -->
+          <path
+            d="M568 320 Q568 362 436 371"
+            fill="none"
+            stroke="#16a34a"
+            stroke-width="1.5"
+            marker-end="url(#awf)"
+            stroke-dasharray="6 4"
+          >
+            <animate
+              attributeName="stroke-dashoffset"
+              values="30;0"
+              dur="2.2s"
+              repeatCount="indefinite"
+            />
+          </path>
+
+          <!-- ── Déchiffrement local ── -->
+          <rect
+            x="172"
+            y="344"
+            width="110"
+            height="54"
+            rx="10"
+            fill="#f0fdf4"
+            stroke="#86efac"
+            stroke-width=".8"
+          />
+          <text
+            x="227"
+            y="364"
+            text-anchor="middle"
+            font-family="DM Sans,sans-serif"
+            font-size="12"
+            font-weight="500"
+            fill="#16a34a"
+          >
+            Déchiffrement
+          </text>
+          <text
+            x="227"
+            y="381"
+            text-anchor="middle"
+            font-family="DM Sans,sans-serif"
+            font-size="11"
+            fill="#16a34a"
+          >
+            clé privée
+          </text>
+
+          <!-- flèche modèle → déchiffrement -->
+          <line
+            x1="324"
+            y1="371"
+            x2="283"
+            y2="371"
+            stroke="#6b6b6b"
+            stroke-width="1.5"
+            marker-end="url(#awf)"
+          />
+          <text
+            x="304"
+            y="363"
+            text-anchor="middle"
+            font-family="DM Mono,monospace"
+            font-size="9.5"
+            fill="#aaa"
+          >
+            download
+          </text>
+
+          <!-- ── Modèle final en clair ── -->
+          <rect
+            x="20"
+            y="344"
+            width="110"
+            height="54"
+            rx="10"
+            fill="#f0fdf4"
+            stroke="#86efac"
+            stroke-width=".8"
+          />
+          <text
+            x="75"
+            y="364"
+            text-anchor="middle"
+            font-family="DM Sans,sans-serif"
+            font-size="13"
+            font-weight="500"
+            fill="#16a34a"
+          >
+            Modèle W
+          </text>
+          <text
+            x="75"
+            y="381"
+            text-anchor="middle"
+            font-family="DM Mono,monospace"
+            font-size="11"
+            fill="#16a34a"
+          >
+            en clair ✓
+          </text>
+
+          <!-- flèche déchiffrement → modèle clair -->
+          <line
+            x1="172"
+            y1="371"
+            x2="131"
+            y2="371"
+            stroke="#6b6b6b"
+            stroke-width="1.5"
+            marker-end="url(#awf)"
+          />
+
+          <!-- Zones délimitées -->
+          <!-- <rect
+            x="10"
+            y="22"
+            width="300"
+            height="26"
+            rx="6"
+            fill="none"
+            stroke="#b4b2a9"
+            stroke-width=".6"
+            stroke-dasharray="5 4"
+          />
+          <text
+            x="160"
+            y="39"
+            text-anchor="middle"
+            font-family="DM Mono,monospace"
+            font-size="10"
+            fill="#aaa"
+          >
+            périmètre local
+          </text>
+          <rect
+            x="314"
+            y="22"
+            width="356"
+            height="26"
+            rx="6"
+            fill="none"
+            stroke="#fcd34d"
+            stroke-width=".6"
+            stroke-dasharray="5 4"
+          />
+          <text
+            x="492"
+            y="39"
+            text-anchor="middle"
+            font-family="DM Mono,monospace"
+            font-size="10"
+            fill="#aaa"
+          >
+            cloud AWS — données jamais déchiffrées
+          </text> -->
+
+          <!-- Numéros -->
+          <circle
+            cx="75"
+            cy="152"
+            r="11"
+            fill="#f4f4f2"
+            stroke="#d1d1ce"
+            stroke-width=".8"
+          />
+          <text
+            x="75"
+            y="152"
+            text-anchor="middle"
+            dominant-baseline="central"
+            font-family="DM Mono,monospace"
+            font-size="10"
+            fill="#6b6b6b"
+          >
+            1
+          </text>
+          <circle
+            cx="227"
+            cy="152"
+            r="11"
+            fill="#f5f3ff"
+            stroke="#c4b5fd"
+            stroke-width=".8"
+          />
+          <text
+            x="227"
+            y="152"
+            text-anchor="middle"
+            dominant-baseline="central"
+            font-family="DM Mono,monospace"
+            font-size="10"
+            fill="#7c3aed"
+          >
+            2
+          </text>
+          <circle
+            cx="379"
+            cy="124"
+            r="11"
+            fill="#fef9ec"
+            stroke="#fcd34d"
+            stroke-width=".8"
+          />
+          <text
+            x="379"
+            y="124"
+            text-anchor="middle"
+            dominant-baseline="central"
+            font-family="DM Mono,monospace"
+            font-size="10"
+            fill="#92400e"
+          >
+            3
+          </text>
+          <circle
+            cx="568"
+            cy="84"
+            r="11"
+            fill="#e1f5ee"
+            stroke="#5dcaa5"
+            stroke-width=".8"
+          />
+          <text
+            x="568"
+            y="84"
+            text-anchor="middle"
+            dominant-baseline="central"
+            font-family="DM Mono,monospace"
+            font-size="10"
+            fill="#085041"
+          >
+            4
+          </text>
+        </svg>
+      </div>
+
+      <!-- ═══════════════ S9c — RÉSULTATS ACCURACY ═══════════════ -->
+      <div class="slide" id="s9c">
+        <div class="tag"><span></span>02 · Résultats</div>
+
+        <div
+          class="d1"
+          style="
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+            width: 100%;
+            max-width: 900px;
+          "
+        >
+          <h2>Comparaison de performance des modèles</h2>
+          <img
+            src="accuracy_comparison.png"
+            alt="description"
+            style="
+              width: 100%;
+              border-radius: 12px;
+              object-fit: contain;
+              max-height: 70vh;
+            "
+          />
+          <!-- <p class="caption">Comparaison performances modèles</p> -->
+        </div>
+      </div>
+
+      <!-- ═══════════════ S9d — RÉSULTATS TEMPS ═══════════════ -->
+      <div class="slide" id="s9d">
+        <div class="tag"><span></span>02 · Résultats</div>
+
+        <div
+          class="d1"
+          style="
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+            width: 100%;
+            max-width: 900px;
+          "
+        >
+          <h2>Comparaison du temps d'entrainement</h2>
+          <img
+            src="training_time_comparison.png"
+            alt="description"
+            style="
+              width: 100%;
+              border-radius: 12px;
+              object-fit: contain;
+              max-height: 70vh;
+            "
+          />
+          <!-- <p class="caption">Comparaison performances modèles</p> -->
         </div>
       </div>
 
