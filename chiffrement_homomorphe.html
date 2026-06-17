@@ -489,6 +489,202 @@
         </div>
       </div>
 
+      <!-- ═══════════════ S_PLAN — PLAN ═══════════════ -->
+      <div class="slide" id="splan">
+        <div class="tag"><span></span>Plan</div>
+
+        <div
+          class="d1"
+          style="
+            display: flex;
+            flex-direction: column;
+            gap: 1.4rem;
+            width: 100%;
+            max-width: 640px;
+          "
+        >
+          <div
+            id="plan-1"
+            class="plan-item"
+            style="
+              display: flex;
+              align-items: center;
+              gap: 1.8rem;
+              opacity: 0.35;
+            "
+          >
+            <span
+              style="
+                font-family: var(--mono);
+                font-size: 0.78rem;
+                color: var(--gray);
+                min-width: 1.2rem;
+              "
+              >01</span
+            >
+            <div style="flex: 1; height: 1px; background: #e5e5e5"></div>
+            <span
+              style="
+                font-family: var(--serif);
+                font-size: 1.6rem;
+                color: var(--ink);
+              "
+              >Contexte</span
+            >
+          </div>
+
+          <div
+            id="plan-2"
+            class="plan-item"
+            style="
+              display: flex;
+              align-items: center;
+              gap: 1.8rem;
+              opacity: 0.35;
+            "
+          >
+            <span
+              style="
+                font-family: var(--mono);
+                font-size: 0.78rem;
+                color: var(--gray);
+                min-width: 1.2rem;
+              "
+              >02</span
+            >
+            <div style="flex: 1; height: 1px; background: #e5e5e5"></div>
+            <span
+              style="
+                font-family: var(--serif);
+                font-size: 1.6rem;
+                color: var(--ink);
+              "
+              >Chiffrement Homomorphe</span
+            >
+          </div>
+
+          <div
+            id="plan-3"
+            class="plan-item"
+            style="
+              display: flex;
+              align-items: center;
+              gap: 1.8rem;
+              opacity: 0.35;
+            "
+          >
+            <span
+              style="
+                font-family: var(--mono);
+                font-size: 0.78rem;
+                color: var(--gray);
+                min-width: 1.2rem;
+              "
+              >03</span
+            >
+            <div style="flex: 1; height: 1px; background: #e5e5e5"></div>
+            <span
+              style="
+                font-family: var(--serif);
+                font-size: 1.6rem;
+                color: var(--ink);
+              "
+              >Implémentation</span
+            >
+          </div>
+
+          <div
+            id="plan-4"
+            class="plan-item"
+            style="
+              display: flex;
+              align-items: center;
+              gap: 1.8rem;
+              opacity: 0.35;
+            "
+          >
+            <span
+              style="
+                font-family: var(--mono);
+                font-size: 0.78rem;
+                color: var(--gray);
+                min-width: 1.2rem;
+              "
+              >04</span
+            >
+            <div style="flex: 1; height: 1px; background: #e5e5e5"></div>
+            <span
+              style="
+                font-family: var(--serif);
+                font-size: 1.6rem;
+                color: var(--ink);
+              "
+              >Limites</span
+            >
+          </div>
+
+          <div
+            id="plan-5"
+            class="plan-item"
+            style="
+              display: flex;
+              align-items: center;
+              gap: 1.8rem;
+              opacity: 0.35;
+            "
+          >
+            <span
+              style="
+                font-family: var(--mono);
+                font-size: 0.78rem;
+                color: var(--gray);
+                min-width: 1.2rem;
+              "
+              >05</span
+            >
+            <div style="flex: 1; height: 1px; background: #e5e5e5"></div>
+            <span
+              style="
+                font-family: var(--serif);
+                font-size: 1.6rem;
+                color: var(--ink);
+              "
+              >Alternatives</span
+            >
+          </div>
+
+          <div
+            id="plan-6"
+            class="plan-item"
+            style="
+              display: flex;
+              align-items: center;
+              gap: 1.8rem;
+              opacity: 0.35;
+            "
+          >
+            <span
+              style="
+                font-family: var(--mono);
+                font-size: 0.78rem;
+                color: var(--gray);
+                min-width: 1.2rem;
+              "
+              >06</span
+            >
+            <div style="flex: 1; height: 1px; background: #e5e5e5"></div>
+            <span
+              style="
+                font-family: var(--serif);
+                font-size: 1.6rem;
+                color: var(--ink);
+              "
+              >Conclusion</span
+            >
+          </div>
+        </div>
+      </div>
+
       <!-- ═══════════════ S2 LE PROBLÈME ═══════════════ -->
       <div class="slide" id="s2">
         <div class="tag"><span></span>01 · Contexte</div>
@@ -732,7 +928,7 @@
       </div>
 
       <!-- ═══════════════ S3 POURQUOI ═══════════════ -->
-      <div class="slide" id="s3">
+      <!-- <div class="slide" id="s3">
         <div class="tag"><span></span>01 · Contexte</div>
         <div
           style="
@@ -844,7 +1040,7 @@
             >
           </div>
         </div>
-      </div>
+      </div> -->
 
       <!-- ═══════════════ S4 PRINCIPE FHE ═══════════════ -->
       <div class="slide" id="s4">
@@ -4978,6 +5174,30 @@
       });
       buildDots();
       num.textContent = "1 / " + total;
+
+      // Plan slide animation
+      const planSlide = document.getElementById("splan");
+      const planItems = planSlide.querySelectorAll(".plan-item");
+
+      const planObserver = new MutationObserver(() => {
+        if (planSlide.classList.contains("active")) {
+          planItems.forEach((item, i) => {
+            item.style.transition = "none";
+            item.style.opacity = ".35";
+            item.style.transform = "translateX(-8px)";
+            setTimeout(() => {
+              item.style.transition = "opacity .4s ease, transform .4s ease";
+              item.style.opacity = "1";
+              item.style.transform = "translateX(0)";
+            }, i * 120);
+          });
+        }
+      });
+
+      planObserver.observe(planSlide, {
+        attributes: true,
+        attributeFilter: ["class"],
+      });
     </script>
   </body>
 </html>
